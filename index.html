@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Илья Андреев — UX/UI Designer</title>
+<meta name="description" content="Портфолио UX/UI-дизайнера Ильи Андреева: CRM и внутренние сервисы, финансовые дашборды, дизайн-системы, сайты и маркетплейсы.">
+<meta name="theme-color" content="#F2F2EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101211" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Илья Андреев | UX/UI Designer">
+<meta property="og:description" content="Проектирую сложные веб-сервисы, внутренние панели, дизайн-системы и сайты.">
+<meta property="og:image" content="assets/img/res_hero.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+</head>
+<body>
+<style>
+:root{
+  --paper:#F2F2EF;
+  --surface:#FFFFFF;
+  --ink:#15171A;
+  --ink-2:#43474B;
+  --muted:#7C817F;
+  --rule:#D9D9D3;
+  --rule-soft:#E6E6E1;
+  --accent:#2F5D50;
+  --accent-soft:#E4EDE9;
+  --shadow:0 1px 2px rgba(20,23,20,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#101211;
+    --surface:#171A19;
+    --ink:#E9E9E4;
+    --ink-2:#B6BAB7;
+    --muted:#7E8683;
+    --rule:#282C2A;
+    --rule-soft:#1E2220;
+    --accent:#7FD3B8;
+    --accent-soft:#1A2621;
+    --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#101211;
+  --surface:#171A19;
+  --ink:#E9E9E4;
+  --ink-2:#B6BAB7;
+  --muted:#7E8683;
+  --rule:#282C2A;
+  --rule-soft:#1E2220;
+  --accent:#7FD3B8;
+  --accent-soft:#1A2621;
+  --shadow:0 1px 2px rgba(0,0,0,.4);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Golos Text","Helvetica Neue",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  font-feature-settings:"ss01";
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+.mono{
+  font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  font-weight:500;
+}
+
+.wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+@media (max-width:640px){.wrap{padding:0 20px}}
+
+/* ---------- top bar ---------- */
+.bar{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter:saturate(160%) blur(12px);
+  border-bottom:1px solid var(--rule-soft);
+}
+.bar-in{
+  max-width:1160px;margin:0 auto;padding:0 28px;
+  height:54px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+@media (max-width:640px){.bar-in{padding:0 20px}}
+.bar-name{font-weight:600;letter-spacing:-.01em;font-size:15px;background:none;border:0;padding:0;cursor:pointer;color:inherit;font-family:inherit}
+.bar-nav{display:flex;gap:22px;align-items:center}
+.bar-nav a,.bar-nav button{
+  color:var(--muted);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;
+  font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;
+  transition:color .18s ease;
+}
+.bar-nav a:hover,.bar-nav button:hover{color:var(--ink)}
+@media (max-width:560px){.bar-nav .opt{display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(56px,10vw,132px) 0 clamp(40px,6vw,72px)}
+.eyebrow{color:var(--muted);margin-bottom:22px}
+h1{
+  margin:0;
+  font-size:clamp(34px,6.3vw,74px);
+  line-height:1.0;
+  letter-spacing:-.045em;
+  font-weight:700;
+  text-wrap:balance;
+}
+.hero-role{
+  margin-top:26px;padding-top:18px;border-top:1px solid var(--rule);
+  display:flex;flex-wrap:wrap;gap:8px 26px;color:var(--muted);
+}
+.hero-lead{
+  margin:38px 0 0;max-width:60ch;font-size:clamp(17px,2vw,20px);line-height:1.55;color:var(--ink-2);
+}
+.hero-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.pill{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:9px 15px;border:1px solid var(--rule);border-radius:999px;
+  text-decoration:none;color:var(--ink);
+  font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.02em;
+  transition:border-color .18s ease,background .18s ease,transform .18s ease;
+}
+.pill:hover{border-color:var(--accent);background:var(--accent-soft);transform:translateY(-1px)}
+.pill .dot{width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.pill svg{width:15px;height:15px;flex:none;display:block;fill:var(--accent)}
+
+/* ---------- section frame ---------- */
+section{padding:clamp(48px,6vw,88px) 0;scroll-margin-top:64px}
+.sec-head{
+  display:flex;align-items:baseline;gap:18px;
+  padding-bottom:16px;border-bottom:1px solid var(--ink);margin-bottom:36px;
+}
+.sec-head h2{margin:0;font-size:clamp(22px,3vw,30px);letter-spacing:-.03em;font-weight:700;line-height:1.1}
+.sec-head .count{color:var(--muted);margin-left:auto}
+
+/* ---------- value list ---------- */
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:0 34px}
+.values div{padding:18px 0;border-top:1px solid var(--rule-soft);font-size:16px;line-height:1.45;color:var(--ink-2)}
+@media (max-width:860px){.values{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.values{grid-template-columns:1fr}}
+
+/* ---------- case index ---------- */
+.idx{border-top:1px solid var(--rule)}
+.case-row{
+  width:100%;display:grid;grid-template-columns:172px 1fr 264px;align-items:center;gap:30px;
+  padding:22px 0;border-bottom:1px solid var(--rule);
+  background:none;border-left:0;border-right:0;border-top:0;
+  text-align:left;cursor:pointer;color:inherit;font-family:inherit;
+  transition:padding .25s cubic-bezier(.2,.7,.3,1);
+}
+.case-row:hover{padding-left:12px;padding-right:0}
+.case-kind{color:var(--muted);line-height:1.7}
+.case-title{
+  font-size:clamp(19px,2.3vw,25px);font-weight:600;letter-spacing:-.025em;line-height:1.2;
+  text-wrap:balance;transition:color .18s ease;
+}
+.case-row:hover .case-title{color:var(--accent)}
+.case-thumb{
+  aspect-ratio:16/10;overflow:hidden;border:1px solid var(--rule-soft);background:var(--surface);
+}
+.case-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .55s cubic-bezier(.2,.7,.3,1)}
+.case-row:hover .case-thumb img{transform:scale(1.04)}
+@media (max-width:860px){
+  .case-row{grid-template-columns:1fr;gap:14px;padding:22px 0}
+  .case-row:hover{padding-left:0}
+  .case-thumb{order:-1;aspect-ratio:16/9}
+}
+
+/* ---------- plain lists (skills / tools) ---------- */
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{
+  padding:7px 13px;border:1px solid var(--rule);border-radius:2px;
+  font-size:14px;color:var(--ink-2);background:var(--surface);
+}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px)}
+@media (max-width:760px){.two-col{grid-template-columns:1fr;gap:44px}}
+.sub-label{color:var(--muted);margin-bottom:16px;display:block}
+
+/* ---------- personal ---------- */
+.tape{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,56px);align-items:center}
+@media (max-width:760px){.tape{grid-template-columns:1fr}}
+.tape img{border:1px solid var(--rule-soft)}
+.tape p{color:var(--ink-2);max-width:46ch}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--ink);padding:clamp(48px,6vw,80px) 0 60px}
+.foot-big{font-size:clamp(26px,4.6vw,50px);letter-spacing:-.04em;font-weight:700;line-height:1.05;margin:0 0 28px}
+.foot-links{display:flex;flex-wrap:wrap;gap:10px}
+.foot-note{margin-top:44px;color:var(--muted)}
+
+/* ---------- case detail ---------- */
+.back{
+  display:inline-flex;align-items:center;gap:9px;background:none;border:0;padding:0;cursor:pointer;color:var(--muted);
+  font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;
+  transition:color .18s ease;
+}
+.back:hover{color:var(--ink)}
+.case-head{padding:clamp(34px,5vw,64px) 0 clamp(28px,4vw,48px)}
+.case-head h1{font-size:clamp(30px,5.4vw,60px);line-height:1.02;letter-spacing:-.04em;margin-top:26px}
+.case-lead{margin:28px 0 0;max-width:58ch;font-size:clamp(17px,2vw,20px);line-height:1.55;color:var(--ink-2)}
+.meta{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  margin-top:44px;padding-top:20px;border-top:1px solid var(--ink);
+}
+@media (max-width:700px){.meta{grid-template-columns:1fr;gap:20px}}
+.meta dt{color:var(--muted);margin-bottom:6px}
+.meta dd{margin:0;font-size:15px;line-height:1.45;color:var(--ink-2)}
+
+.body-col{max-width:68ch}
+.blk{padding-bottom:clamp(34px,5vw,58px)}
+.blk h2{
+  font-size:clamp(20px,2.4vw,26px);letter-spacing:-.03em;font-weight:600;line-height:1.2;
+  margin:0 0 18px;padding-top:26px;border-top:1px solid var(--rule);
+}
+.blk p{margin:0 0 16px;color:var(--ink-2)}
+.blk p:last-child{margin-bottom:0}
+.dashlist{list-style:none;margin:0;padding:0}
+.dashlist li{position:relative;padding-left:22px;margin-bottom:11px;color:var(--ink-2)}
+.dashlist li::before{
+  content:"";position:absolute;left:0;top:.72em;width:11px;height:1px;background:var(--accent);
+}
+.note{
+  border:1px solid var(--rule);border-left:2px solid var(--accent);
+  padding:16px 18px;background:var(--surface);margin:0 0 30px;
+}
+.note strong{display:block;color:var(--ink);margin-bottom:6px;font-size:13px;letter-spacing:.02em}
+.note span{font-size:14.5px;line-height:1.5;color:var(--muted)}
+
+figure{margin:0 0 clamp(30px,4vw,50px)}
+figure img{border:1px solid var(--rule-soft);background:var(--surface)}
+figcaption{
+  margin-top:11px;color:var(--muted);font-size:13.5px;line-height:1.45;max-width:62ch;
+}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:26px}
+@media (max-width:700px){.ba{grid-template-columns:1fr}}
+.ba > div{border-top:1px solid var(--rule);padding-top:16px}
+.ba h3{margin:0 0 12px;font-size:15px;font-weight:600;letter-spacing:-.01em}
+.extlink{
+  display:inline-flex;align-items:center;gap:8px;color:var(--accent);text-decoration:none;
+  border-bottom:1px solid currentColor;padding-bottom:1px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;font-size:13px;
+}
+.next{border-top:1px solid var(--ink);padding-top:14px}
+
+/* ---------- motion ---------- */
+.rev{opacity:0;transform:translateY(14px)}
+.rev.in{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.2,.7,.3,1),transform .6s cubic-bezier(.2,.7,.3,1)}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important;animation:none !important}
+  .rev{opacity:1;transform:none}
+}
+[hidden]{display:none !important}
+</style>
+
+<div class="bar">
+  <div class="bar-in">
+    <button class="bar-name" data-home>Илья Андреев</button>
+    <nav class="bar-nav">
+      <a href="#cases" class="opt" data-jump="cases">Кейсы</a>
+      <a href="#skills" class="opt" data-jump="skills">Навыки</a>
+      <a href="#contacts" class="opt" data-jump="contacts">Контакты</a>
+      <button id="theme" title="Сменить тему">Тема</button>
+    </nav>
+  </div>
+</div>
+
+<main id="home">
+  <div class="wrap">
+
+    <div class="hero">
+      <div class="mono eyebrow">Портфолио · 2026</div>
+      <h1>Илья Андреев | UX/UI Designer</h1>
+      <div class="hero-role mono">
+        <span>Продуктовый дизайн</span><span>B2B и внутренние сервисы</span><span>Дизайн-системы</span>
+      </div>
+      <p class="hero-lead">Дизайнер с опытом разработки сложных веб-сервисов, торговых площадок, сайтов для застройщиков, внутренних управленческих панелей, сервисов доставки и платформ бронирования.</p>
+      <div class="hero-links">
+        <a class="pill" data-icon="mail" href="mailto:nowayhc13@gmail.com">nowayhc13@gmail.com</a>
+        <a class="pill" data-icon="tg" href="https://t.me/ilya_nwy" target="_blank" rel="noopener">@ilya_nwy</a>
+      </div>
+    </div>
+
+    <section id="values">
+      <div class="sec-head">
+        <h2>В проектах помогал бизнесу</h2>
+      </div>
+      <div class="values">
+        <div>Проектировать внутренние операционные инструменты</div>
+        <div>Запускать имиджевые сайты и маркетплейсы</div>
+        <div>Улучшать пользовательские сценарии и конверсию в лид</div>
+        <div>Систематизировать Figma-файлы и дизайн-системы</div>
+        <div>Ускорять подключение новых клиентов</div>
+        <div>Снижать ручную работу дизайна и фронтенда</div>
+      </div>
+    </section>
+
+    <section id="cases">
+      <div class="sec-head">
+        <h2>Кейсы</h2>
+        <span class="count mono">Шесть проектов</span>
+      </div>
+      <div class="idx" id="case-index"></div>
+    </section>
+
+    <section id="skills">
+      <div class="sec-head">
+        <h2>Навыки и инструменты</h2>
+      </div>
+      <div class="two-col">
+        <div>
+          <span class="sub-label mono">Компетенции</span>
+          <div class="tags" id="skills-list"></div>
+        </div>
+        <div>
+          <span class="sub-label mono">Инструменты</span>
+          <div class="tags" id="tools-list"></div>
+          <span class="sub-label mono" style="margin-top:32px">Языки</span>
+          <div class="tags"><span class="tag">Русский — C2</span><span class="tag">Английский — B1+</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="personal">
+      <div class="sec-head">
+        <h2>Личный проект</h2>
+        <span class="count mono">Tape Town</span>
+      </div>
+      <div class="tape">
+        <img id="tape-img" alt="Tape Town — онлайн-радиостанция: логотип и веб-страница">
+        <div>
+          <p>Проект по разработке бренда для онлайн-радио: логотип, шаблон для анонсов трансляций, иллюстрации, дизайн и вёрстка сайта, оформление социальных сетей.</p>
+          <div class="hero-links" style="margin-top:24px">
+            <a class="pill" href="https://tapetown.live/" target="_blank" rel="noopener"><span class="dot"></span>Сайт</a>
+            <a class="pill" href="https://www.instagram.com/tapetown.live/" target="_blank" rel="noopener"><span class="dot"></span>Instagram</a>
+            <a class="pill" href="https://soundcloud.com/tapetownlive" target="_blank" rel="noopener"><span class="dot"></span>SoundCloud</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer id="contacts">
+    <div class="wrap">
+      <p class="foot-big">Открыт к продуктовым<br>и дизайн-системным задачам</p>
+      <div class="foot-links">
+        <a class="pill" data-icon="mail" href="mailto:nowayhc13@gmail.com">nowayhc13@gmail.com</a>
+        <a class="pill" data-icon="tg" href="https://t.me/ilya_nwy" target="_blank" rel="noopener">@ilya_nwy</a>
+      </div>
+      <p class="foot-note mono">Илья Андреев · UX/UI Designer</p>
+    </div>
+  </footer>
+</main>
+
+<article id="case-view" hidden></article>
+
+<script>
+const IMG = {"crm_pc": "assets/img/crm_pc.webp", "crm_phone": "assets/img/crm_phone.webp", "crm_flow": "assets/img/crm_flow.webp", "crm_meet": "assets/img/crm_meet.webp", "fin_main": "assets/img/fin_main.webp", "fin_sales": "assets/img/fin_sales.webp", "fin_plan": "assets/img/fin_plan.webp", "fin_anim": "assets/img/fin_anim.webp", "fin_proto": "assets/img/fin_proto.webp", "fin_wire": "assets/img/fin_wire.webp", "fin_layout": "assets/img/fin_layout.webp", "ds_vars": "assets/img/ds_vars.webp", "res_hero": "assets/img/res_hero.webp", "res_anim": "assets/img/res_anim.webp", "res_concept": "assets/img/res_concept.webp", "res_screens": "assets/img/res_screens.webp", "res_variants": "assets/img/res_variants.webp", "tur_main": "assets/img/tur_main.webp", "tur_ia": "assets/img/tur_ia.webp", "tur_wire": "assets/img/tur_wire.webp", "tur_mood": "assets/img/tur_mood.webp", "tur_tour": "assets/img/tur_tour.webp", "tur_pc": "assets/img/tur_pc.webp", "tur_phone": "assets/img/tur_phone.webp", "jew_photo": "assets/img/jew_photo.webp", "jew_screens": "assets/img/jew_screens.webp", "jew_flow": "assets/img/jew_flow.webp", "jew_structure": "assets/img/jew_structure.webp", "tape": "assets/img/tape.webp"};
+
+const SKILLS = ["Design Systems","Figma Variables","Design Tokens","Product Design","UX/UI Design","B2B tools","Admin panels","CRM-like systems","Responsive Web Design","Prototyping","Figma Animation","Atomic Design","HTML/CSS"];
+const TOOLS  = ["Figma","MCP","VS Code","Codex","Perplexity","Midjourney","Я.Метрика","Google Analytics","Excel","Adobe Illustrator","Notion","Miro"];
+
+const NDA = "Из-за NDA в кейсе используются обезличенные описания и синтетические данные. Реальные названия, макеты, бизнес-данные, внутренняя документация и детали клиентской логики не публикуются.";
+
+const CASES = [
+{
+  id:"crm",
+  title:"CRM для отдела продаж девелоперской компании",
+  kind:["Внутренний сервис","B2B · Десктоп и мобайл"],
+  thumb:"crm_pc",
+  lead:"Спроектировал внутренний сервис для отдела продаж девелоперского проекта: от первого контакта с клиентом и сбора вводных до подготовки оффера и расчётов.",
+  meta:[
+    ["Роль","UX/UI-проектирование: структура продукта, сценарии, интерфейсные решения, адаптивные макеты, подготовка материалов для разработки"],
+    ["Пользователи","Менеджеры продаж, сотрудники колл-центров, брокеры"],
+    ["Платформы","Десктоп и мобильные устройства: все ключевые сценарии проработаны для обоих"]
+  ],
+  nda:NDA,
+  blocks:[
+    {t:"h",v:"Результат"},
+    {t:"ul",v:["Объединил несколько рабочих сценариев в единую интерфейсную систему, где данные, действия и этапы сделки связаны между собой.","Упростил переход между этапами работы с клиентом: структура сервиса помогает сохранять контекст, снижать дублирование действий и уменьшать риск потери информации.","Проработал все ключевые сценарии для десктопа и мобильных устройств."]},
+    {t:"fig",k:"crm_pc",c:"Десктопные экраны сервиса: клиентская база, карточка клиента, анкетирование, подбор квартир, график встреч, расчёты"},
+    {t:"h",v:"О проекте"},
+    {t:"p",v:"Продукт нужен командам, которые работают с большим количеством входящих обращений, клиентских данных, объектов недвижимости, встреч, расчётов и материалов для сделки."},
+    {t:"p",v:"Главная задача интерфейса — помочь менеджерам вести клиента последовательно, не теряя контекст между этапами и не пересобирая информацию вручную в разных инструментах."},
+    {t:"h",v:"Задача"},
+    {t:"p",v:"Спроектировать многоуровневую панель, которая объединяет ключевые сценарии работы с клиентом в одном сервисе."},
+    {t:"p",v:"Фокус был не только на отдельных экранах, но и на системной логике продукта: как пользователь переходит между этапами, где хранится контекст, какие данные переиспользуются и как разные разделы поддерживают друг друга."},
+    {t:"fig",k:"crm_flow",c:"User flow: путь клиента от первого обращения до итогового предложения"},
+    {t:"h",v:"Функциональные зоны"},
+    {t:"p",v:"В сервисе были предусмотрены разделы для:"},
+    {t:"ul",v:["работы с клиентской базой;","ведения карточки клиента;","сбора и уточнения вводных данных;","работы с объектами и предложениями;","планирования встреч;","подготовки материалов для клиента;","выполнения финансовых расчётов;","настройки условий и программ."]},
+    {t:"fig",k:"crm_phone",c:"Мобильные версии ключевых сценариев: клиенты, анкетирование, подборка квартир, ипотечный калькулятор, итоговое предложение"},
+    {t:"h",v:"Проблема исходных требований"},
+    {t:"p",v:"Изначальные требования описывали набор функций, но не полностью раскрывали, как эти функции должны работать вместе как единый продукт."},
+    {t:"p",v:"В процессе анализа я выявлял логические разрывы между разделами, незакрытые сценарии и места, где пользователь мог потерять контекст или столкнуться с дублированием действий."},
+    {t:"p",v:"По сути, нужно было превратить набор отдельных функциональных блоков в цельную систему для последовательной работы с клиентом."},
+    {t:"fig",k:"crm_meet",c:"Экран подтверждения встречи для клиента"},
+    {t:"h",v:"Ход работы"},
+    {t:"ul",v:["Анализировал требования и выявлял логические пробелы между модулями.","Предлагал корректировки структуры и пользовательских потоков.","Проектировал ключевые разделы сервиса с учётом ролей пользователей.","Продумывал состояния интерфейса: пустые состояния, ошибки, промежуточные шаги и сценарии возврата.","Прорабатывал user flow для основных этапов работы с клиентом.","Адаптировал интерфейсные решения для десктопа и мобильных устройств.","Готовил макеты и структуру экранов для передачи в разработку."]}
+  ]
+},
+{
+  id:"dashboard",
+  title:"Финансовый дашборд для девелопера",
+  kind:["Аналитика","Внутренний сервис"],
+  thumb:"fin_main",
+  lead:"Спроектировал внутренний сервис финансового мониторинга для девелоперского проекта: плановые и фактические показатели, периоды, фильтры и версии данных в единой интерфейсной логике.",
+  meta:[
+    ["Роль","UX/UI-проектирование: структура раздела, логика дашбордов и таблиц, интерактивные прототипы, передача в разработку"],
+    ["Пользователи","Финансовые специалисты, руководители направлений, пользователи управленческой отчётности"],
+    ["Формат работы","Интерактивные прототипы на встречах с клиентом и ссылки на внутреннее тестирование"]
+  ],
+  nda:"Из-за NDA в кейсе используются обезличенные описания и синтетические данные. Реальные названия, финансовые показатели, внутренние источники данных, макеты и детали клиентской логики не публикуются.",
+  blocks:[
+    {t:"h",v:"Результат"},
+    {t:"ul",v:["Упростил анализ финансовых метрик за счёт понятной структуры дашбордов, таблиц и сценариев сравнения.","Подготовил интерфейс, который подходит как для детальной аналитической работы, так и для демонстрации агрегированных результатов руководителям."]},
+    {t:"fig",k:"fin_main",c:"Дашборд мониторинга финансов: выручка, расходы, доля рекламных расходов и динамика по месяцам"},
+    {t:"h",v:"О проекте"},
+    {t:"p",v:"Я проектировал раздел финансового мониторинга внутри панели управления для девелоперского проекта. Сервис должен был помочь финансовой команде работать с большим объёмом показателей, сравнивать плановые и фактические значения, анализировать отклонения и быстро переключаться между разными срезами данных."},
+    {t:"p",v:"Главная задача интерфейса — сделать сложную финансовую отчётность понятной, управляемой и пригодной для регулярной работы."},
+    {t:"fig",k:"fin_sales",c:"Таблица продаж: план и факт по проектам, отклонения и конверсии"},
+    {t:"h",v:"Ключевая UX-задача: версии плана"},
+    {t:"p",v:"В финансовой отчётности плановые значения могут обновляться, пересчитываться и использоваться в разных сценариях анализа. При этом пользователю важно понимать, с какой версией плана он сейчас сравнивает факт, и быстро переключаться между вариантами."},
+    {t:"p",v:"Я проработал логику выбора версии, отображение активного состояния и сценарии сравнения, чтобы эта сложность оставалась управляемой для пользователя."},
+    {t:"fig",k:"fin_plan",c:"Табличный режим работы с плановыми показателями"},
+    {t:"h",v:"Что было важно"},
+    {t:"ul",v:["Разделить быстрый обзор и глубокий анализ.","Сделать структуру показателей понятной без перегрузки экрана.","Продумать фильтры, переключатели и состояния для разных сценариев сравнения.","Показать отклонения в удобной для анализа форме.","Сохранить единые паттерны взаимодействия между дашбордами и таблицами.","Подготовить интерфейс к работе с большим количеством данных."]},
+    {t:"fig",k:"fin_anim",c:"Интерактивный прототип: переключение срезов и сравнение показателей"},
+    {t:"h",v:"Прототип"},
+    {t:"p",v:"Все результаты работы на встречах с клиентом я демонстрировал в виде интерактивных прототипов и после презентаций отдавал ссылки на внутреннее тестирование командой и сотрудниками компании клиента."},
+    {t:"fig",k:"fin_proto",c:"Схема прототипа: связи между экранами и состояниями"},
+    {t:"fig",k:"fin_wire",c:"Ранние вайрфреймы структуры отчётов"},
+    {t:"h",v:"Ход работы"},
+    {t:"ul",v:["Анализировал требования и сценарии работы с финансовой отчётностью.","Структурировал показатели, срезы, фильтры и варианты сравнения.","Проектировал логику дашбордов, таблиц и детальных представлений.","Прорабатывал сценарии выбора версии плановых данных.","Собирал интерактивные прототипы для проверки логики интерфейса.","Дорабатывал структуру экранов по результатам обсуждений с командой.","Готовил макеты и состояния интерфейса для передачи в разработку."]},
+    {t:"fig",k:"fin_layout",c:"Компоновка блоков дашборда"}
+  ]
+},
+{
+  id:"design-system",
+  title:"Дизайн-система для SaaS-платформы доставки",
+  kind:["Дизайн-система","SaaS"],
+  thumb:"ds_vars",
+  lead:"Перевёл клиентские витрины SaaS-платформы доставки на систему компонентов и переменных и перепроектировал checkout, сократив число шагов оформления заказа.",
+  meta:[
+    ["Роль","UX/UI-проектирование и систематизация дизайн-инфраструктуры: структура файлов, компоненты, переменные, клиентская кастомизация, сценарии checkout"],
+    ["Продукт","SaaS для запуска доставки из ресторанов: каталог, оформление заказа, личный кабинет"],
+    ["Зоны продукта","Каталог и листинг · Оформление заказа · Личный кабинет"]
+  ],
+  nda:"Из-за NDA в кейсе используются обезличенные описания и синтетические данные. Реальные названия, макеты, клиентские витрины, внутренняя документация и детали продуктовой логики не публикуются.",
+  blocks:[
+    {t:"h",v:"Результат"},
+    {t:"ul",v:["Сформировал единое дизайн-ядро, через которое можно быстрее поддерживать разные клиентские версии продукта.","Упростил обновление интерфейсов: новые состояния, компоненты и функциональные изменения больше не требуют ручной пересборки каждого макета с нуля.","Перепроектировал checkout: сократил количество шагов и собрал ключевые действия оформления заказа в более прямой и понятный сценарий."]},
+    {t:"fig",k:"ds_vars",c:"Библиотека переменных: цвет, типографика, размеры, отступы и состояния элементов"},
+    {t:"h",v:"Исходная ситуация"},
+    {t:"p",v:"Для каждого ресторана в продукте создаётся клиентская витрина: каталог блюд, сценарий оформления заказа и личный кабинет пользователя. По мере роста продукта поддерживать такие витрины становилось всё сложнее."},
+    {t:"ul",v:["макеты находились в разных разделах, из-за чего было сложнее быстро ориентироваться в структуре;","кастомизация под бренд клиента требовала ручных правок;","при появлении нового функционала изменения приходилось повторять в нескольких местах;","поддержка актуальности макетов занимала всё больше времени по мере роста количества клиентских витрин."]},
+    {t:"p",v:"Продукт масштабировался, а дизайн-инфраструктура уже не соответствовала этому темпу."},
+    {t:"h",v:"Структура и дизайн-система"},
+    {t:"p",v:"Первым этапом стала систематизация макетов. Я сгруппировал интерфейсы вокруг трёх ключевых пользовательских зон: каталог и листинг, оформление заказа, личный кабинет."},
+    {t:"p",v:"Это помогло отделить базовую продуктовую структуру от клиентских особенностей и упростить навигацию по файлу для дизайна, менеджмента и разработки."},
+    {t:"h",v:"Переменные и компоненты"},
+    {t:"p",v:"В дизайн-ядро вошли цветовые переменные, типографика, размеры и отступы, базовые UI-компоненты, состояния элементов и компоненты для повторяющихся экранов и сценариев."},
+    {t:"p",v:"Компоненты были завязаны на переменные, чтобы клиентская кастомизация не требовала пересборки интерфейса вручную. Это позволило быстрее адаптировать витрины под разные бренды и централизованно поддерживать изменения в продукте."},
+    {t:"h",v:"Логика системы"},
+    {t:"p",v:"Работа не ограничивалась визуальной частью. Важно было продумать, как дизайн-система будет жить в реальном продукте:"},
+    {t:"ul",v:["какие элементы должны быть общими для всех витрин;","какие параметры могут меняться под конкретного клиента;","как обновлять продуктовые сценарии без хаоса в макетах;","как сохранить единый пользовательский опыт при разных визуальных настройках."]},
+    {t:"h",v:"Перепроектирование checkout"},
+    {t:"ba",was:["многоступенчатый поток оформления;","отдельная корзина как промежуточный этап;","несколько последовательных экранов перед оплатой;","повторный ввод данных в сценариях, где часть информации уже могла быть известна системе."],now:["единый экран оформления заказа;","корзина, данные доставки и основные действия собраны в одном сценарии;","для авторизованных пользователей часть данных может подставляться автоматически;","переход к оплате происходит без лишних промежуточных шагов."]},
+    {t:"p",v:"Checkout стал более прямым: пользователь видит состав заказа, проверяет данные, уточняет условия доставки и переходит к оплате без лишних переключений между экранами."},
+    {t:"h",v:"Эффект"},
+    {t:"ul",v:["Поддержка макетов стала проще за счёт единого дизайн-ядра, а клиентская кастомизация — быстрее и предсказуемее.","Новые компоненты и состояния можно внедрять централизованно.","Подключение новых клиентов стало проще за счёт переиспользования компонентов и переменных.","Checkout стал короче и понятнее для конечного пользователя, а повторные заказы — удобнее.","Фокус команды сместился с ручной пересборки отдельных витрин на развитие общего продуктового ядра."]}
+  ]
+},
+{
+  id:"restaurant",
+  title:"Сайт для ресторанного проекта",
+  kind:["Сайт","Brasserie 2.0"],
+  thumb:"res_hero",
+  lead:"Спроектировал сайт для ресторанного проекта с нестандартной двухчастной структурой десктопной версии, сфокусированной вокруг двух действий: заказать доставку и забронировать стол.",
+  meta:[
+    ["Роль","Дизайн и концепция сайта: визуальное направление, структура страницы, пользовательский фокус, адаптивные версии, подготовка макетов к реализации"],
+    ["Клиент","Brasserie 2.0 — ресторанный проект от создателей сети Lambic"],
+    ["Результат","Сайт опубликован и попал в подборку лучших сайтов, созданных на Tilda"]
+  ],
+  link:{href:"https://brasserie.ru/",label:"brasserie.ru"},
+  blocks:[
+    {t:"fig",k:"res_hero",c:"Двухчастная структура первого экрана: слева фиксированная визуальная зона с целевыми действиями, справа скроллируемый контент"},
+    {t:"h",v:"О проекте"},
+    {t:"p",v:"Для нового заведения требовался сайт, который должен был передать атмосферу пространства ещё до физического контакта с рестораном: через визуальную подачу, структуру страницы, движение между контентом и постоянную доступность ключевых действий."},
+    {t:"p",v:"В отличие от типичных ресторанных сайтов, где пользователь последовательно скроллит блоки с меню, интерьером, контактами и формами, здесь важно было сделать интерфейс более выразительным и запоминающимся, но при этом не усложнить разработку."},
+    {t:"h",v:"Задача"},
+    {t:"ul",v:["создать сайт, который визуально выделяется среди типичных ресторанных решений;","передать характер и атмосферу места через структуру интерфейса;","сфокусировать пользователя на двух основных действиях: заказ доставки и бронирование стола;","сохранить простую и экономную реализацию для адаптивных версий;","подготовить дизайн, который можно быстро собрать на Tilda без избыточной технической сложности."]},
+    {t:"h",v:"Концепция"},
+    {t:"p",v:"Основная идея строилась не вокруг декоративного приёма, а вокруг структуры страницы. В десктопной версии экран разделён на две части: левая — фиксированная визуальная зона с изображением или видео ресторана и постоянно доступными целевыми действиями; правая — скроллируемая зона с текстом, описаниями и дополнительным контентом."},
+    {t:"p",v:"Такой подход позволил совместить эмоциональную и функциональную задачи: пользователь читает о проекте, но при этом всё время видит визуальный образ ресторана и может в любой момент перейти к бронированию или заказу."},
+    {t:"fig",k:"res_anim",c:"Поведение двухчастной структуры при прокрутке"},
+    {t:"h",v:"Почему это работает"},
+    {t:"p",v:"Ключевые действия не теряются при прокрутке и остаются доступными на всём протяжении страницы, при этом визуальная часть не становится отдельным декоративным блоком, а постоянно сопровождает контент."},
+    {t:"p",v:"Пользовательский фокус удерживается в пределах простой двухчастной структуры: сайт выглядит нестандартно для ресторанной категории, но остаётся понятным и управляемым."},
+    {t:"fig",k:"res_concept",c:"Дизайн-концепция: типографика, фотография и иллюстрация"},
+    {t:"h",v:"Адаптивы"},
+    {t:"p",v:"Структура десктопа помогла упростить работу с адаптивными версиями. Вместо того чтобы проектировать несколько принципиально разных макетов под каждое разрешение, базовая структура трансформировалась под разные экраны:"},
+    {t:"ul",v:["на планшете одна из частей десктопного экрана становилась основой для более компактной компоновки;","на мобильных устройствах контент выстраивался в последовательный вертикальный сценарий;","ключевые действия сохраняли заметность и доступность."]},
+    {t:"fig",k:"res_screens",c:"Экраны сайта и адаптивные версии"},
+    {t:"h",v:"Ход работы"},
+    {t:"ul",v:["Проработал несколько вариантов визуальной и структурной подачи сайта.","Разработал двухчастную концепцию десктопной версии.","Продумал расположение ключевых действий: доставки и бронирования.","Собрал структуру контентных блоков и визуальных акцентов.","Спроектировал адаптивные версии с опорой на единую базовую логику.","Подготовил макеты для передачи в вёрстку на Tilda."]},
+    {t:"fig",k:"res_variants",c:"Три концепции подачи, из которых выбиралось направление"}
+  ]
+},
+{
+  id:"tourism",
+  title:"Сайт туристической компании в Иркутске",
+  kind:["Сайт","BAIKAL TRAIN"],
+  thumb:"tur_main",
+  lead:"Обновил сайт туроператора по Кругобайкальской железной дороге: пересобрал информационную архитектуру, разработал дизайн-концепцию и более 30 адаптивных макетов.",
+  meta:[
+    ["Роль","Аналитика и информационная архитектура, прототипирование, дизайн-концепция, библиотека интерфейсных элементов, адаптивные макеты"],
+    ["Клиент","BAIKAL TRAIN — официальный организатор путешествий по КБЖД с 2010 года, более 20 000 туристов ежегодно"],
+    ["Объём","Более 30 адаптивных макетов для десктопной и мобильной версий"]
+  ],
+  blocks:[
+    {t:"h",v:"Результат"},
+    {t:"p",v:"Упрощение организации контента и его представление облегчило пользователям изучение сайта и поиск информации, а визуальные акценты помогли сфокусировать внимание на ключевых элементах."},
+    {t:"p",v:"Интерфейс стал стильным и понятным, а дизайн-концепция отразила философию и позиционирование компании."},
+    {t:"fig",k:"tur_main",c:"Главная страница: десктопная и мобильная версии"},
+    {t:"h",v:"Задача"},
+    {t:"p",v:"Компания обратилась с запросом на обновление веб-сайта: текущий дизайн устарел и требовал обновления, навигация нуждалась в упрощении, а контент — в доработке."},
+    {t:"h",v:"Интервью и подготовка"},
+    {t:"p",v:"На начальном этапе было проведено несколько интервью с клиентом для сбора информации и выявления требований. Это позволило понять общие проблемы проекта и бизнес-цели клиента, а также сформулировать задачи, которые должен решить новый дизайн."},
+    {t:"h",v:"Аналитика и информационная архитектура"},
+    {t:"p",v:"Из интервью стало ясно, что у клиента есть проблемы с контентом: некоторые тексты были сложны для восприятия и не соответствовали целевой аудитории. Это могло препятствовать выполнению основного действия пользователей — «Забронировать тур»."},
+    {t:"p",v:"Также выяснилось, что навигация содержит ряд страниц с минимальным количеством контента, которые можно объединить в один раздел. Был проведён анализ конкурентов и оценка их дизайнерских решений — вместе с клиентом мы выделили преимущества и недостатки существующих решений. Этот анализ послужил основой для новой структуры сайта."},
+    {t:"fig",k:"tur_ia",c:"Информационная архитектура и пользовательские сценарии"},
+    {t:"h",v:"Проектирование страниц"},
+    {t:"p",v:"На этапе проектирования был подготовлен прототип главной страницы, где были определены блоки и их значимость для пользователя. Новые страницы создавались и существующие дорабатывались с учётом этого принципа."},
+    {t:"fig",k:"tur_wire",c:"Прототип главной страницы: блоки и их приоритет"},
+    {t:"h",v:"Мудборд и дизайн-концепция"},
+    {t:"p",v:"Клиент выразил желание видеть больше визуальных элементов, связанных с природой и путешествиями, чтобы сайт лучше отражал бренд. После изучения примеров аналогичных сайтов и составления мудборда стало понятно, что фирменный стиль клиента отлично вписывается в концепцию «путешествия на природу» и соответствует требованиям ниши."},
+    {t:"fig",k:"tur_mood",c:"Мудборд дизайн-концепции"},
+    {t:"h",v:"Дизайн страниц и адаптивов"},
+    {t:"p",v:"Главная страница стала основой для общего цветового и шрифтового решения. В процессе создания остальных страниц была сформирована библиотека интерфейсных элементов, которая постоянно дополнялась. Это позволило ускорить разработку макетов и обеспечить единообразие в дизайне."},
+    {t:"p",v:"Элементы были разработаны для тёмной и светлой тем — в дизайне использовались блоки обеих тем."},
+    {t:"fig",k:"tur_tour",c:"Страница тура"},
+    {t:"fig",k:"tur_pc",c:"Внутренние страницы сайта"},
+    {t:"fig",k:"tur_phone",c:"Мобильные версии: более 30 адаптивных макетов"}
+  ]
+},
+{
+  id:"jewelry",
+  title:"Сайт и маркетплейс ювелирной компании",
+  kind:["E-commerce","Mobile-first"],
+  thumb:"jew_photo",
+  lead:"Пересобрал структуру сайта ювелирного бренда MIE и разработал детальные прототипы всех экранов в формате mobile-first.",
+  meta:[
+    ["Роль","Пересмотр структуры сайта, детальные прототипы всех экранов, интерактивный прототип для презентации и передачи UI-дизайнеру студии"],
+    ["Клиент","MIE — ювелирный бренд из Санкт-Петербурга, более 20 магазинов по стране, интернет-магазин и маркетплейсы"],
+    ["Подход","Mobile-first: большинство пользователей заходят на сайт с мобильных устройств"]
+  ],
+  blocks:[
+    {t:"fig",k:"jew_photo",c:"Мобильный сценарий покупки"},
+    {t:"h",v:"Проблема"},
+    {t:"p",v:"У MIE был веб-сайт, но его сложная структура затрудняла быстрый поиск украшений, что негативно сказывалось на конверсии и, следовательно, на выручке компании. Кроме того, дизайн сайта устарел и требовал обновления."},
+    {t:"h",v:"Задача"},
+    {t:"p",v:"Моя задача заключалась в пересмотре структуры сайта и разработке детальных прототипов всех его экранов. Основная цель нового сайта — увеличение числа заказов."},
+    {t:"h",v:"Референсы"},
+    {t:"p",v:"Перед началом проектирования клиент предоставил свои пожелания и референсы относительно ожидаемого результата. Я анализировал их и дополнял своими идеями по каждому разделу сайта. После согласования референсов приступил к разработке экранов."},
+    {t:"h",v:"Проектирование"},
+    {t:"p",v:"Прототипы разрабатывались последовательно по сценариям использования:"},
+    {t:"ul",v:["просмотр товара и совершение покупки;","регистрация и управление личным кабинетом;","поиск товаров в каталоге с использованием фильтров;","поиск дополнительной информации, помогающей принять решение о покупке."]},
+    {t:"p",v:"Особое внимание уделялось удобству использования сайта на мобильных устройствах, так как с них поступало больше всего трафика. Работая над экранами, я учитывал, как лучше реализовать функционал и расположить контент для удобства взаимодействия как на ПК, так и на мобильных устройствах."},
+    {t:"fig",k:"jew_screens",c:"Прототипы мобильных экранов: каталог, карточка товара, оформление заказа, личный кабинет"},
+    {t:"h",v:"Интерактивный прототип"},
+    {t:"p",v:"Завершённые прототипы были сделаны интерактивными — я настроил макеты и подготовил их для презентации клиенту с целью согласования и передачи UI-дизайнеру студии."},
+    {t:"fig",k:"jew_flow",c:"Пользовательские сценарии и связи между экранами"},
+    {t:"fig",k:"jew_structure",c:"Структура прототипа по разделам"}
+  ]
+}
+];
+
+const ICONS={
+  mail:'<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.4 6.6A2.4 2.4 0 0 1 4.8 4.5h14.4a2.4 2.4 0 0 1 2.4 2.1v.4l-9.2 5.7a.8.8 0 0 1-.8 0L2.4 7v-.4Zm0 2.6 8.8 5.4c.5.3 1.1.3 1.6 0l8.8-5.4v8.2a2.4 2.4 0 0 1-2.4 2.4H4.8a2.4 2.4 0 0 1-2.4-2.4V9.2Z"/></svg>',
+  tg:'<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>'
+};
+function paintIcons(scope){
+  (scope||document).querySelectorAll(".pill[data-icon]:not([data-iconed])").forEach(p=>{
+    p.insertAdjacentHTML("afterbegin", ICONS[p.dataset.icon]||"");
+    p.setAttribute("data-iconed","");
+  });
+}
+
+/* ---------- render helpers ---------- */
+const el = (t,c)=>{const e=document.createElement(t); if(c) e.className=c; return e;};
+const home = document.getElementById("home");
+const view = document.getElementById("case-view");
+
+function img(key,alt){
+  const i=el("img");
+  i.src=IMG[key]; i.alt=alt||""; i.loading="lazy"; i.decoding="async";
+  return i;
+}
+
+/* skills / tools */
+const sl=document.getElementById("skills-list");
+SKILLS.forEach(s=>{const t=el("span","tag");t.textContent=s;sl.appendChild(t);});
+const tl=document.getElementById("tools-list");
+TOOLS.forEach(s=>{const t=el("span","tag");t.textContent=s;tl.appendChild(t);});
+document.getElementById("tape-img").src=IMG.tape;
+
+/* case index */
+function buildIndex(container,list,small){
+  list.forEach(c=>{
+    const row=el("button","case-row");
+    row.type="button";
+    row.setAttribute("aria-label",c.title);
+    const kind=el("div","case-kind mono");
+    kind.innerHTML=c.kind.map(k=>`<div>${k}</div>`).join("");
+    const title=el("div","case-title");
+    title.textContent=c.title;
+    const thumb=el("div","case-thumb");
+    thumb.appendChild(img(c.thumb,c.title));
+    row.append(kind,title,thumb);
+    row.addEventListener("click",()=>go(c.id));
+    container.appendChild(row);
+  });
+}
+buildIndex(document.getElementById("case-index"),CASES);
+
+/* case view */
+function renderCase(c){
+  view.innerHTML="";
+  const wrap=el("div","wrap");
+
+  const head=el("div","case-head");
+  const back=el("button","back");
+  back.type="button";
+  back.innerHTML="← Все кейсы";
+  back.addEventListener("click",()=>go(null));
+  const kind=el("div","mono");
+  kind.style.color="var(--muted)";
+  kind.style.marginTop="26px";
+  kind.textContent=c.kind.join(" · ");
+  const h1=el("h1");
+  h1.textContent=c.title;
+  const lead=el("p","case-lead");
+  lead.textContent=c.lead;
+  head.append(back,kind,h1,lead);
+
+  if(c.link){
+    const a=el("a","extlink");
+    a.href=c.link.href; a.target="_blank"; a.rel="noopener";
+    a.textContent=c.link.label+" ↗";
+    const holder=el("div"); holder.style.marginTop="26px"; holder.appendChild(a);
+    head.appendChild(holder);
+  }
+
+  const dl=el("dl","meta");
+  c.meta.forEach(([k,v])=>{
+    const dt=el("dt","mono"); dt.textContent=k;
+    const dd=el("dd"); dd.textContent=v;
+    const cell=el("div"); cell.append(dt,dd); dl.appendChild(cell);
+  });
+  head.appendChild(dl);
+  wrap.appendChild(head);
+
+  if(c.nda){
+    const n=el("div","note");
+    n.innerHTML=`<strong>Ограничения публикации</strong><span>${c.nda}</span>`;
+    n.style.maxWidth="68ch";
+    wrap.appendChild(n);
+  }
+
+  c.blocks.forEach(b=>{
+    if(b.t==="fig"){
+      const f=el("figure");
+      f.append(img(b.k,b.c));
+      const cap=el("figcaption"); cap.textContent=b.c;
+      f.appendChild(cap);
+      f.classList.add("rev");
+      wrap.appendChild(f);
+      return;
+    }
+    const box=el("div","blk body-col");
+    if(b.t==="h"){const h=el("h2");h.textContent=b.v;box.appendChild(h);box.style.paddingBottom="0";}
+    if(b.t==="p"){const p=el("p");p.textContent=b.v;box.appendChild(p);box.style.paddingBottom="8px";}
+    if(b.t==="ul"){
+      const ul=el("ul","dashlist");
+      b.v.forEach(li=>{const l=el("li");l.textContent=li;ul.appendChild(l);});
+      box.appendChild(ul);box.style.paddingBottom="14px";
+    }
+    if(b.t==="ba"){
+      const g=el("div","ba");
+      [["Было",b.was],["Стало",b.now]].forEach(([t,arr])=>{
+        const d=el("div");
+        const h=el("h3");h.textContent=t;
+        const ul=el("ul","dashlist");
+        arr.forEach(li=>{const l=el("li");l.textContent=li;ul.appendChild(l);});
+        d.append(h,ul);g.appendChild(d);
+      });
+      box.appendChild(g);
+    }
+    wrap.appendChild(box);
+  });
+
+  const others=CASES.filter(x=>x.id!==c.id);
+  const nextSec=el("section");
+  const nh=el("div","sec-head");
+  nh.innerHTML='<h2>Другие проекты</h2>';
+  const nidx=el("div","idx");
+  buildIndex(nidx,others);
+  nextSec.append(nh,nidx);
+  wrap.appendChild(nextSec);
+
+  const foot=el("footer");
+  const fw=el("div","wrap");
+  fw.style.padding="0";
+  fw.innerHTML=`<p class="foot-big">Открыт к продуктовым<br>и дизайн-системным задачам</p>
+    <div class="foot-links">
+      <a class="pill" data-icon="mail" href="mailto:nowayhc13@gmail.com">nowayhc13@gmail.com</a>
+      <a class="pill" data-icon="tg" href="https://t.me/ilya_nwy" target="_blank" rel="noopener">@ilya_nwy</a>
+    </div>`;
+  foot.appendChild(fw);
+  foot.style.marginTop="20px";
+  wrap.appendChild(foot);
+
+  view.appendChild(wrap);
+  paintIcons(view);
+  observeReveals();
+}
+
+/* ---------- routing ---------- */
+function go(id){
+  if(id) location.hash="#/"+id;
+  else location.hash="";
+}
+function route(){
+  const m=location.hash.match(/^#\/(.+)$/);
+  const c=m?CASES.find(x=>x.id===m[1]):null;
+  if(c){
+    home.hidden=true; view.hidden=false;
+    renderCase(c);
+    document.title=c.title+" · Илья Андреев";
+  }else{
+    view.hidden=true; view.innerHTML=""; home.hidden=false;
+    document.title="Илья Андреев";
+  }
+  window.scrollTo({top:0,behavior:"instant"});
+}
+window.addEventListener("hashchange",route);
+
+document.querySelectorAll("[data-jump]").forEach(a=>{
+  a.addEventListener("click",e=>{
+    e.preventDefault();
+    const id=a.dataset.jump;
+    if(!home.hidden){
+      document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"});
+    }else{
+      location.hash="";
+      setTimeout(()=>document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"}),60);
+    }
+  });
+});
+document.querySelector("[data-home]").addEventListener("click",()=>go(null));
+
+/* theme toggle */
+const root=document.documentElement;
+const btn=document.getElementById("theme");
+function currentDark(){
+  const t=root.getAttribute("data-theme");
+  if(t) return t==="dark";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
+btn.addEventListener("click",()=>{
+  root.setAttribute("data-theme",currentDark()?"light":"dark");
+  try{localStorage.setItem("ia-theme",root.getAttribute("data-theme"));}catch(e){}
+});
+try{
+  const saved=localStorage.getItem("ia-theme");
+  if(saved==="dark"||saved==="light") root.setAttribute("data-theme",saved);
+}catch(e){}
+
+/* reveals */
+let io;
+function observeReveals(){
+  if(!("IntersectionObserver" in window)){
+    document.querySelectorAll(".rev").forEach(n=>n.classList.add("in")); return;
+  }
+  if(!io){
+    io=new IntersectionObserver(es=>{
+      es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});
+    },{rootMargin:"0px 0px -8% 0px"});
+  }
+  document.querySelectorAll(".rev:not(.in)").forEach(n=>io.observe(n));
+}
+
+paintIcons(document);
+route();
+observeReveals();
+</script>
+</body>
+</html>
