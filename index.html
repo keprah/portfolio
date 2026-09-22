@@ -5,9 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Илья Андреев — UX/UI Designer</title>
 <meta name="description" content="Портфолио UX/UI-дизайнера Ильи Андреева: CRM и внутренние сервисы, финансовые дашборды, дизайн-системы, сайты и маркетплейсы.">
-<meta name="theme-color" content="#F2F2EF" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#101211" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#F2F2EF">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:title" content="Илья Андреев | UX/UI Designer">
 <meta property="og:description" content="Проектирую сложные веб-сервисы, внутренние панели, дизайн-системы и сайты.">
 <meta property="og:image" content="assets/og.jpg">
@@ -18,10 +20,25 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112920000', 'ym');
+
+    ym(112920000, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true, trackHash:true});
+</script>
+<!-- /Yandex.Metrika counter -->
 </head>
 <body>
+<!-- Yandex.Metrika counter (noscript) -->
+<noscript><div><img src="https://mc.yandex.ru/watch/112920000" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <style>
 :root{
+  color-scheme:light;
   --paper:#F2F2EF;
   --surface:#FFFFFF;
   --ink:#15171A;
@@ -33,33 +50,6 @@
   --accent-soft:#E4EDE9;
   --shadow:0 1px 2px rgba(20,23,20,.05);
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --paper:#101211;
-    --surface:#171A19;
-    --ink:#E9E9E4;
-    --ink-2:#B6BAB7;
-    --muted:#7E8683;
-    --rule:#282C2A;
-    --rule-soft:#1E2220;
-    --accent:#7FD3B8;
-    --accent-soft:#1A2621;
-    --shadow:0 1px 2px rgba(0,0,0,.4);
-  }
-}
-:root[data-theme="dark"]{
-  --paper:#101211;
-  --surface:#171A19;
-  --ink:#E9E9E4;
-  --ink-2:#B6BAB7;
-  --muted:#7E8683;
-  --rule:#282C2A;
-  --rule-soft:#1E2220;
-  --accent:#7FD3B8;
-  --accent-soft:#1A2621;
-  --shadow:0 1px 2px rgba(0,0,0,.4);
-}
-
 *{box-sizing:border-box}
 body{
   margin:0;
@@ -107,6 +97,12 @@ a{color:inherit}
 }
 .bar-nav a:hover,.bar-nav button:hover{color:var(--ink)}
 @media (max-width:560px){.bar-nav .opt{display:none}}
+.lang{display:inline-flex;align-items:center;gap:2px;padding-left:18px;border-left:1px solid var(--rule)}
+.bar-nav .lang button{padding:5px 6px;border-radius:2px;color:var(--muted)}
+.bar-nav .lang button[aria-pressed="true"]{color:var(--ink);box-shadow:inset 0 -1px 0 var(--ink)}
+.bar-nav .lang button[aria-pressed="false"]:hover{color:var(--ink)}
+@media (max-width:560px){.lang{padding-left:0;border-left:0}}
+.i18n-pending .bar-in,.i18n-pending main,.i18n-pending #case-view{visibility:hidden}
 
 /* ---------- hero ---------- */
 .hero{padding:clamp(56px,10vw,132px) 0 clamp(40px,6vw,72px)}
@@ -266,14 +262,46 @@ figcaption{
 [hidden]{display:none !important}
 </style>
 
+<script>
+/* Язык выбирается до первой отрисовки, чтобы не мигал русский текст у англоязычных посетителей.
+   Порядок: ?lang= в ссылке → ручной выбор (запомнен) → страна по часовому поясу → язык браузера. */
+(function(){
+  var CIS = (
+    /* Россия */ "Europe/Moscow Europe/Kaliningrad Europe/Simferopol Europe/Kirov Europe/Volgograd Europe/Astrakhan " +
+    "Europe/Saratov Europe/Ulyanovsk Europe/Samara Asia/Yekaterinburg Asia/Omsk Asia/Novosibirsk Asia/Barnaul " +
+    "Asia/Tomsk Asia/Novokuznetsk Asia/Krasnoyarsk Asia/Irkutsk Asia/Chita Asia/Yakutsk Asia/Khandyga " +
+    "Asia/Vladivostok Asia/Ust-Nera Asia/Magadan Asia/Sakhalin Asia/Srednekolymsk Asia/Kamchatka Asia/Anadyr W-SU " +
+    /* Беларусь */ "Europe/Minsk " +
+    /* Казахстан */ "Asia/Almaty Asia/Qostanay Asia/Qyzylorda Asia/Aqtobe Asia/Aqtau Asia/Atyrau Asia/Oral " +
+    /* Кыргызстан, Таджикистан, Узбекистан, Туркменистан */ "Asia/Bishkek Asia/Dushanbe Asia/Tashkent Asia/Samarkand Asia/Ashgabat Asia/Ashkhabad " +
+    /* Армения, Азербайджан, Молдова */ "Asia/Yerevan Asia/Baku Europe/Chisinau Europe/Tiraspol"
+  ).split(" ");
+  function detect(){
+    try{ var q=new URLSearchParams(location.search).get("lang"); if(q==="ru"||q==="en") return q; }catch(e){}
+    try{ var s=localStorage.getItem("ia-lang"); if(s==="ru"||s==="en") return s; }catch(e){}
+    var tz=""; try{ tz=Intl.DateTimeFormat().resolvedOptions().timeZone||""; }catch(e){}
+    if(tz) return CIS.indexOf(tz)>-1 ? "ru" : "en";
+    var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||""];
+    for(var i=0;i<langs.length;i++){ if(/^(ru|be|kk|ky|uz|tg|hy|az)\b/i.test(langs[i])) return "ru"; }
+    return "en";
+  }
+  var L=detect(), r=document.documentElement;
+  window.__IA_LANG=L; r.lang=L;
+  if(L!=="ru"){ r.classList.add("i18n-pending"); setTimeout(function(){ r.classList.remove("i18n-pending"); },2500); }
+})();
+</script>
+
 <div class="bar">
   <div class="bar-in">
-    <button class="bar-name" data-home>Илья Андреев</button>
+    <button class="bar-name" data-home data-i18n="name">Илья Андреев</button>
     <nav class="bar-nav">
-      <a href="#cases" class="opt" data-jump="cases">Кейсы</a>
-      <a href="#skills" class="opt" data-jump="skills">Навыки</a>
-      <a href="#contacts" class="opt" data-jump="contacts">Контакты</a>
-      <button id="theme" title="Сменить тему">Тема</button>
+      <a href="#cases" class="opt" data-jump="cases" data-i18n="nav.cases">Кейсы</a>
+      <a href="#skills" class="opt" data-jump="skills" data-i18n="nav.skills">Навыки</a>
+      <a href="#contacts" class="opt" data-jump="contacts" data-i18n="nav.contacts">Контакты</a>
+      <div class="lang" role="group" aria-label="Язык сайта" data-i18n-aria="lang.label">
+        <button type="button" data-lang="ru" lang="ru" aria-label="Русский" aria-pressed="true">RU</button>
+        <button type="button" data-lang="en" lang="en" aria-label="English" aria-pressed="false">EN</button>
+      </div>
     </nav>
   </div>
 </div>
@@ -282,12 +310,12 @@ figcaption{
   <div class="wrap">
 
     <div class="hero">
-      <div class="mono eyebrow">Портфолио · 2026</div>
-      <h1>Илья Андреев | UX/UI Designer</h1>
+      <div class="mono eyebrow" data-i18n="eyebrow">Портфолио · 2026</div>
+      <h1 data-i18n="h1">Илья Андреев | UX/UI Designer</h1>
       <div class="hero-role mono">
-        <span>Продуктовый дизайн</span><span>B2B и внутренние сервисы</span><span>Дизайн-системы</span>
+        <span data-i18n="role.1">Продуктовый дизайн</span><span data-i18n="role.2">B2B и внутренние сервисы</span><span data-i18n="role.3">Дизайн-системы</span>
       </div>
-      <p class="hero-lead">Дизайнер с опытом разработки сложных веб-сервисов, торговых площадок, сайтов для застройщиков, внутренних управленческих панелей, сервисов доставки и платформ бронирования.</p>
+      <p class="hero-lead" data-i18n="lead">Дизайнер с опытом разработки сложных веб-сервисов, торговых площадок, сайтов для застройщиков, внутренних управленческих панелей, сервисов доставки и платформ бронирования.</p>
       <div class="hero-links">
         <a class="pill" data-icon="mail" href="mailto:nowayhc13@gmail.com">nowayhc13@gmail.com</a>
         <a class="pill" data-icon="tg" href="https://t.me/ilya_nwy" target="_blank" rel="noopener">@ilya_nwy</a>
@@ -296,55 +324,55 @@ figcaption{
 
     <section id="values">
       <div class="sec-head">
-        <h2>В проектах помогал бизнесу</h2>
+        <h2 data-i18n="values.h">В проектах помогал бизнесу</h2>
       </div>
       <div class="values">
-        <div>Проектировать внутренние операционные инструменты</div>
-        <div>Запускать имиджевые сайты и маркетплейсы</div>
-        <div>Улучшать пользовательские сценарии и конверсию в лид</div>
-        <div>Систематизировать Figma-файлы и дизайн-системы</div>
-        <div>Ускорять подключение новых клиентов</div>
-        <div>Снижать ручную работу дизайна и фронтенда</div>
+        <div data-i18n="v1">Проектировать внутренние операционные инструменты</div>
+        <div data-i18n="v2">Запускать имиджевые сайты и маркетплейсы</div>
+        <div data-i18n="v3">Улучшать пользовательские сценарии и конверсию в лид</div>
+        <div data-i18n="v4">Систематизировать Figma-файлы и дизайн-системы</div>
+        <div data-i18n="v5">Ускорять подключение новых клиентов</div>
+        <div data-i18n="v6">Снижать ручную работу дизайна и фронтенда</div>
       </div>
     </section>
 
     <section id="cases">
       <div class="sec-head">
-        <h2>Кейсы</h2>
-        <span class="count mono">Шесть проектов</span>
+        <h2 data-i18n="cases.h">Кейсы</h2>
+        <span class="count mono" data-i18n="cases.count">Шесть проектов</span>
       </div>
       <div class="idx" id="case-index"></div>
     </section>
 
     <section id="skills">
       <div class="sec-head">
-        <h2>Навыки и инструменты</h2>
+        <h2 data-i18n="skills.h">Навыки и инструменты</h2>
       </div>
       <div class="two-col">
         <div>
-          <span class="sub-label mono">Компетенции</span>
+          <span class="sub-label mono" data-i18n="skills.sub">Компетенции</span>
           <div class="tags" id="skills-list"></div>
         </div>
         <div>
-          <span class="sub-label mono">Инструменты</span>
+          <span class="sub-label mono" data-i18n="tools.sub">Инструменты</span>
           <div class="tags" id="tools-list"></div>
-          <span class="sub-label mono" style="margin-top:32px">Языки</span>
-          <div class="tags"><span class="tag">Русский — C2</span><span class="tag">Английский — B1+</span></div>
+          <span class="sub-label mono" style="margin-top:32px" data-i18n="langs.sub">Языки</span>
+          <div class="tags"><span class="tag" data-i18n="langs.ru">Русский — C2</span><span class="tag" data-i18n="langs.en">Английский — B1+</span></div>
         </div>
       </div>
     </section>
 
     <section id="personal">
       <div class="sec-head">
-        <h2>Личный проект</h2>
+        <h2 data-i18n="personal.h">Личный проект</h2>
         <span class="count mono">Tape Town</span>
       </div>
       <div class="tape">
-        <img id="tape-img" alt="Tape Town — онлайн-радиостанция: логотип и веб-страница">
+        <img id="tape-img" alt="Tape Town — онлайн-радиостанция: логотип и веб-страница" data-i18n-alt="personal.alt">
         <div>
-          <p>Проект по разработке бренда для онлайн-радио: логотип, шаблон для анонсов трансляций, иллюстрации, дизайн и вёрстка сайта, оформление социальных сетей.</p>
+          <p data-i18n="personal.p">Проект по разработке бренда для онлайн-радио: логотип, шаблон для анонсов трансляций, иллюстрации, дизайн и вёрстка сайта, оформление социальных сетей.</p>
           <div class="hero-links" style="margin-top:24px">
-            <a class="pill" href="https://tapetown.live/" target="_blank" rel="noopener"><span class="dot"></span>Сайт</a>
+            <a class="pill" href="https://tapetown.live/" target="_blank" rel="noopener"><span class="dot"></span><span data-i18n="personal.site">Сайт</span></a>
             <a class="pill" href="https://www.instagram.com/tapetown.live/" target="_blank" rel="noopener"><span class="dot"></span>Instagram</a>
             <a class="pill" href="https://soundcloud.com/tapetownlive" target="_blank" rel="noopener"><span class="dot"></span>SoundCloud</a>
           </div>
@@ -355,12 +383,12 @@ figcaption{
 
   <footer id="contacts">
     <div class="wrap">
-      <p class="foot-big">Открыт к продуктовым<br>и дизайн-системным задачам</p>
+      <p class="foot-big" data-i18n-html="foot.big">Открыт к продуктовым<br>и дизайн-системным задачам</p>
       <div class="foot-links">
         <a class="pill" data-icon="mail" href="mailto:nowayhc13@gmail.com">nowayhc13@gmail.com</a>
         <a class="pill" data-icon="tg" href="https://t.me/ilya_nwy" target="_blank" rel="noopener">@ilya_nwy</a>
       </div>
-      <p class="foot-note mono">Илья Андреев · UX/UI Designer</p>
+      <p class="foot-note mono" data-i18n="foot.note">Илья Андреев · UX/UI Designer</p>
     </div>
   </footer>
 </main>
@@ -590,6 +618,280 @@ const CASES = [
 }
 ];
 
+/* ---------- interface strings ---------- */
+const UI = {
+  ru:{
+    "name":"Илья Андреев",
+    "nav.cases":"Кейсы","nav.skills":"Навыки","nav.contacts":"Контакты","lang.label":"Язык сайта",
+    "eyebrow":"Портфолио · 2026",
+    "h1":"Илья Андреев | UX/UI Designer",
+    "role.1":"Продуктовый дизайн","role.2":"B2B и внутренние сервисы","role.3":"Дизайн-системы",
+    "lead":"Дизайнер с опытом разработки сложных веб-сервисов, торговых площадок, сайтов для застройщиков, внутренних управленческих панелей, сервисов доставки и платформ бронирования.",
+    "values.h":"В проектах помогал бизнесу",
+    "v1":"Проектировать внутренние операционные инструменты",
+    "v2":"Запускать имиджевые сайты и маркетплейсы",
+    "v3":"Улучшать пользовательские сценарии и конверсию в лид",
+    "v4":"Систематизировать Figma-файлы и дизайн-системы",
+    "v5":"Ускорять подключение новых клиентов",
+    "v6":"Снижать ручную работу дизайна и фронтенда",
+    "cases.h":"Кейсы","cases.count":"Шесть проектов",
+    "skills.h":"Навыки и инструменты","skills.sub":"Компетенции","tools.sub":"Инструменты","langs.sub":"Языки",
+    "langs.ru":"Русский — C2","langs.en":"Английский — B1+",
+    "personal.h":"Личный проект",
+    "personal.p":"Проект по разработке бренда для онлайн-радио: логотип, шаблон для анонсов трансляций, иллюстрации, дизайн и вёрстка сайта, оформление социальных сетей.",
+    "personal.alt":"Tape Town — онлайн-радиостанция: логотип и веб-страница",
+    "personal.site":"Сайт",
+    "foot.big":"Открыт к продуктовым<br>и дизайн-системным задачам",
+    "foot.note":"Илья Андреев · UX/UI Designer",
+    "back":"← Все кейсы","nda":"Ограничения публикации","more":"Другие проекты","before":"Было","after":"Стало"
+  },
+  en:{
+    "name":"Ilya Andreev",
+    "nav.cases":"Cases","nav.skills":"Skills","nav.contacts":"Contact","lang.label":"Site language",
+    "eyebrow":"Portfolio · 2026",
+    "h1":"Ilya Andreev | UX/UI Designer",
+    "role.1":"Product design","role.2":"B2B & internal tools","role.3":"Design systems",
+    "lead":"Designer experienced in complex web services, marketplaces, websites for real estate developers, internal admin panels, delivery services and booking platforms.",
+    "values.h":"How I've helped businesses",
+    "v1":"Design internal operational tools",
+    "v2":"Launch brand websites and marketplaces",
+    "v3":"Improve user flows and lead conversion",
+    "v4":"Bring order to Figma files and design systems",
+    "v5":"Speed up onboarding of new clients",
+    "v6":"Cut manual work for design and front-end teams",
+    "cases.h":"Cases","cases.count":"Six projects",
+    "skills.h":"Skills & tools","skills.sub":"Expertise","tools.sub":"Tools","langs.sub":"Languages",
+    "langs.ru":"Russian — C2","langs.en":"English — B1+",
+    "personal.h":"Personal project",
+    "personal.p":"Brand identity for an online radio station: logo, templates for broadcast announcements, illustrations, website design and build, and social media design.",
+    "personal.alt":"Tape Town, an online radio station: logo and web page",
+    "personal.site":"Website",
+    "foot.big":"Open to product<br>and design system work",
+    "foot.note":"Ilya Andreev · UX/UI Designer",
+    "back":"← All cases","nda":"Confidentiality","more":"More projects","before":"Before","after":"After"
+  }
+};
+
+const TOOLS_EN = ["Figma","MCP","VS Code","Codex","Perplexity","Midjourney","Yandex Metrica","Google Analytics","Excel","Adobe Illustrator","Notion","Miro"];
+
+const NDA_EN = "Due to an NDA, this case uses anonymized descriptions and synthetic data. Real names, mockups, business data, internal documentation and client-specific logic are not published.";
+
+/* ---------- cases in English: same ids, images and order as the Russian set ---------- */
+const CASES_EN = [
+{
+  id:"crm",
+  title:"Sales CRM for a real estate developer",
+  kind:["Internal tool","B2B · Desktop & mobile"],
+  thumb:"crm_pc",
+  lead:"Designed an internal tool for a real estate developer’s sales team, covering everything from first contact and collecting client requirements to preparing offers and financial calculations.",
+  meta:[
+    ["Role","UX/UI design: product structure, user flows, interface design, responsive layouts and developer handoff"],
+    ["Users","Sales managers, call center staff, brokers"],
+    ["Platforms","Desktop and mobile: every key flow is designed for both"]
+  ],
+  nda:NDA_EN,
+  blocks:[
+    {t:"h",v:"Outcome"},
+    {t:"ul",v:["Brought several work flows together into a single interface system where data, actions and deal stages are connected.","Made moving between stages of client work easier: the structure preserves context, reduces duplicate actions and lowers the risk of losing information.","Designed all key flows for desktop and mobile."]},
+    {t:"fig",k:"crm_pc",c:"Desktop screens: client database, client profile, intake questionnaire, apartment selection, meeting schedule, calculations"},
+    {t:"h",v:"About the project"},
+    {t:"p",v:"The product is for teams that handle a high volume of inbound requests, client data, properties, meetings, calculations and deal materials."},
+    {t:"p",v:"The interface’s main job is to help managers guide a client step by step, without losing context between stages or manually re-assembling information across different tools."},
+    {t:"h",v:"The task"},
+    {t:"p",v:"Design a multi-level panel that brings the key client-work scenarios into one service."},
+    {t:"p",v:"The focus wasn’t only on individual screens but on the product’s system logic: how users move between stages, where context lives, which data gets reused and how different sections support each other."},
+    {t:"fig",k:"crm_flow",c:"User flow: the client journey from first request to final offer"},
+    {t:"h",v:"Functional areas"},
+    {t:"p",v:"The service includes sections for:"},
+    {t:"ul",v:["working with the client database;","managing client profiles;","collecting and refining requirements;","working with properties and offers;","scheduling meetings;","preparing client materials;","running financial calculations;","configuring terms and programs."]},
+    {t:"fig",k:"crm_phone",c:"Mobile versions of key flows: clients, questionnaire, apartment selection, mortgage calculator, final offer"},
+    {t:"h",v:"The problem with the initial requirements"},
+    {t:"p",v:"The original requirements listed features but didn’t fully explain how they should work together as one product."},
+    {t:"p",v:"During analysis I identified logical gaps between sections, unfinished scenarios, and places where users could lose context or have to repeat actions."},
+    {t:"p",v:"In essence, the job was to turn a set of separate functional blocks into a coherent system for working with clients step by step."},
+    {t:"fig",k:"crm_meet",c:"Meeting confirmation screen for the client"},
+    {t:"h",v:"Process"},
+    {t:"ul",v:["Analyzed requirements and identified logical gaps between modules.","Proposed changes to the structure and user flows.","Designed key sections of the service around user roles.","Worked through interface states: empty states, errors, intermediate steps and return paths.","Mapped user flows for the main stages of client work.","Adapted interface solutions for desktop and mobile.","Prepared mockups and screen structure for developer handoff."]}
+  ]
+},
+{
+  id:"dashboard",
+  title:"Financial dashboard for a real estate developer",
+  kind:["Analytics","Internal tool"],
+  thumb:"fin_main",
+  lead:"Designed an internal financial monitoring tool for a real estate development project, bringing planned and actual figures, periods, filters and data versions into one consistent interface.",
+  meta:[
+    ["Role","UX/UI design: section structure, dashboard and table logic, interactive prototypes, developer handoff"],
+    ["Users","Finance specialists, department heads, management reporting users"],
+    ["How we worked","Interactive prototypes shown at client meetings, then shared for internal testing"]
+  ],
+  nda:"Due to an NDA, this case uses anonymized descriptions and synthetic data. Real names, financial figures, internal data sources, mockups and client-specific logic are not published.",
+  blocks:[
+    {t:"h",v:"Outcome"},
+    {t:"ul",v:["Made financial metrics easier to analyze through a clear structure of dashboards, tables and comparison scenarios.","Delivered an interface that works both for detailed analysis and for presenting aggregated results to leadership."]},
+    {t:"fig",k:"fin_main",c:"Financial monitoring dashboard: revenue, expenses, share of advertising spend and monthly trends"},
+    {t:"h",v:"About the project"},
+    {t:"p",v:"I designed the financial monitoring section of a management panel for a real estate development project. The tool had to help the finance team work with a large set of metrics, compare planned and actual values, analyze variances and switch quickly between different data slices."},
+    {t:"p",v:"The interface’s main job was to make complex financial reporting clear, manageable and suitable for everyday use."},
+    {t:"fig",k:"fin_sales",c:"Sales table: plan vs. actual by project, variances and conversion rates"},
+    {t:"h",v:"Key UX challenge: plan versions"},
+    {t:"p",v:"In financial reporting, planned values can be updated, recalculated and used in different analysis scenarios. Users need to know which version of the plan they are comparing actuals against, and to switch between versions quickly."},
+    {t:"p",v:"I designed the version selection logic, the active-state display and the comparison scenarios so that this complexity stays manageable."},
+    {t:"fig",k:"fin_plan",c:"Table mode for working with planned figures"},
+    {t:"h",v:"What mattered"},
+    {t:"ul",v:["Separate a quick overview from deep analysis.","Make the metric structure clear without overloading the screen.","Design filters, toggles and states for different comparison scenarios.","Present variances in a form that is easy to analyze.","Keep interaction patterns consistent across dashboards and tables.","Prepare the interface for large volumes of data."]},
+    {t:"fig",k:"fin_anim",c:"Interactive prototype: switching data slices and comparing metrics"},
+    {t:"h",v:"Prototype"},
+    {t:"p",v:"I presented all work at client meetings as interactive prototypes, then shared the links so the team and the client’s staff could test them internally."},
+    {t:"fig",k:"fin_proto",c:"Prototype map: connections between screens and states"},
+    {t:"fig",k:"fin_wire",c:"Early wireframes of the report structure"},
+    {t:"h",v:"Process"},
+    {t:"ul",v:["Analyzed requirements and financial reporting workflows.","Structured metrics, slices, filters and comparison options.","Designed the logic of dashboards, tables and detail views.","Worked out scenarios for selecting planned data versions.","Built interactive prototypes to validate the interface logic.","Refined the screen structure based on team discussions.","Prepared mockups and interface states for developer handoff."]},
+    {t:"fig",k:"fin_layout",c:"Dashboard block layout"}
+  ]
+},
+{
+  id:"design-system",
+  title:"Design system for a SaaS delivery platform",
+  kind:["Design system","SaaS"],
+  thumb:"ds_vars",
+  lead:"Moved the client storefronts of a SaaS delivery platform onto a system of components and variables, and redesigned checkout to cut the number of steps needed to place an order.",
+  meta:[
+    ["Role","UX/UI design and design infrastructure: file structure, components, variables, client customization, checkout flows"],
+    ["Product","SaaS for launching restaurant delivery: catalog, checkout, user account"],
+    ["Product areas","Catalog & listings · Checkout · User account"]
+  ],
+  nda:"Due to an NDA, this case uses anonymized descriptions and synthetic data. Real names, mockups, client storefronts, internal documentation and product logic details are not published.",
+  blocks:[
+    {t:"h",v:"Outcome"},
+    {t:"ul",v:["Built a single design core that makes it faster to maintain different client versions of the product.","Simplified interface updates: new states, components and features no longer require rebuilding each mockup from scratch.","Redesigned checkout: fewer steps, with the key ordering actions gathered into a more direct and clearer flow."]},
+    {t:"fig",k:"ds_vars",c:"Variable library: color, typography, sizing, spacing and element states"},
+    {t:"h",v:"Starting point"},
+    {t:"p",v:"Every restaurant on the platform gets its own client storefront: a menu catalog, a checkout flow and a user account. As the product grew, maintaining these storefronts became harder and harder."},
+    {t:"ul",v:["mockups were scattered across different sections, which made the structure hard to navigate;","brand customization for each client required manual edits;","new features had to be repeated in several places;","keeping mockups up to date took more and more time as the number of storefronts grew."]},
+    {t:"p",v:"The product was scaling, but the design infrastructure could no longer keep up."},
+    {t:"h",v:"Structure and design system"},
+    {t:"p",v:"The first step was to organize the mockups. I grouped the interfaces around three key user areas: catalog and listings, checkout, and user account."},
+    {t:"p",v:"This separated the core product structure from client-specific details and made the file easier to navigate for design, management and development."},
+    {t:"h",v:"Variables and components"},
+    {t:"p",v:"The design core included color variables, typography, sizing and spacing, base UI components, element states, and components for recurring screens and flows."},
+    {t:"p",v:"Components were bound to variables so that client customization no longer required rebuilding the interface by hand. This made it faster to adapt storefronts to different brands and to maintain product changes centrally."},
+    {t:"h",v:"System logic"},
+    {t:"p",v:"The work went beyond visuals. It was important to think through how the design system would live in the real product:"},
+    {t:"ul",v:["which elements should be shared across all storefronts;","which parameters can change for a specific client;","how to update product flows without chaos in the mockups;","how to keep a consistent user experience across different visual settings."]},
+    {t:"h",v:"Checkout redesign"},
+    {t:"ba",was:["a multi-step checkout flow;","a separate cart as an intermediate step;","several sequential screens before payment;","re-entering data the system could already know."],now:["a single checkout screen;","cart, delivery details and main actions gathered in one flow;","some data pre-filled for signed-in users;","straight to payment with no extra steps."]},
+    {t:"p",v:"Checkout became more direct: users see their order, check their details, confirm delivery options and go to payment without jumping between screens."},
+    {t:"h",v:"Impact"},
+    {t:"ul",v:["Maintaining mockups got easier thanks to a single design core, and client customization became faster and more predictable.","New components and states can be rolled out centrally.","Onboarding new clients got simpler through reusable components and variables.","Checkout became shorter and clearer for end users, and repeat orders more convenient.","The team’s focus shifted from manually rebuilding individual storefronts to developing the shared product core."]}
+  ]
+},
+{
+  id:"restaurant",
+  title:"Website for a restaurant",
+  kind:["Website","Brasserie 2.0"],
+  thumb:"res_hero",
+  lead:"Designed a restaurant website with an unconventional two-part desktop layout, built around two key actions: ordering delivery and booking a table.",
+  meta:[
+    ["Role","Design and concept: visual direction, page structure, user focus, responsive versions, preparing mockups for the build"],
+    ["Client","Brasserie 2.0, a restaurant from the team behind the Lambic chain"],
+    ["Result","The site went live and was featured in a selection of the best websites built on Tilda"]
+  ],
+  link:{href:"https://brasserie.ru/",label:"brasserie.ru"},
+  blocks:[
+    {t:"fig",k:"res_hero",c:"Two-part first screen: a fixed visual area with key actions on the left, scrolling content on the right"},
+    {t:"h",v:"About the project"},
+    {t:"p",v:"The new restaurant needed a website that would convey the atmosphere of the space before anyone set foot inside: through visuals, page structure, movement between content and constant access to key actions."},
+    {t:"p",v:"Unlike typical restaurant sites, where users scroll through blocks of menu, interior, contacts and forms one after another, this interface needed to be more expressive and memorable, without making development harder."},
+    {t:"h",v:"The task"},
+    {t:"ul",v:["create a site that stands out visually from typical restaurant websites;","convey the character and atmosphere of the place through the structure of the interface;","focus users on two main actions: ordering delivery and booking a table;","keep the responsive versions simple and cost-effective to build;","deliver a design that could be assembled quickly on Tilda without unnecessary technical complexity."]},
+    {t:"h",v:"Concept"},
+    {t:"p",v:"The core idea was built not around a decorative trick but around the page structure. On desktop the screen is split in two: the left side is a fixed visual area with a photo or video of the restaurant and always-available key actions; the right side scrolls, with text, descriptions and additional content."},
+    {t:"p",v:"This combines the emotional and the functional goals: users read about the restaurant while always seeing its visual identity, and can jump to booking or ordering at any moment."},
+    {t:"fig",k:"res_anim",c:"How the two-part layout behaves on scroll"},
+    {t:"h",v:"Why it works"},
+    {t:"p",v:"Key actions never get lost while scrolling and stay available throughout the page, and the visual side isn’t a separate decorative block: it accompanies the content the whole way."},
+    {t:"p",v:"User focus stays within a simple two-part structure: the site looks unusual for the restaurant category but remains clear and easy to use."},
+    {t:"fig",k:"res_concept",c:"Design concept: typography, photography and illustration"},
+    {t:"h",v:"Responsive versions"},
+    {t:"p",v:"The desktop structure made the responsive versions easier. Instead of designing several fundamentally different layouts for each screen size, the base structure adapted to different screens:"},
+    {t:"ul",v:["on tablet, one half of the desktop screen became the basis for a more compact layout;","on mobile, the content flowed into a sequential vertical layout;","key actions stayed visible and accessible."]},
+    {t:"fig",k:"res_screens",c:"Site screens and responsive versions"},
+    {t:"h",v:"Process"},
+    {t:"ul",v:["Explored several options for the site’s visual and structural approach.","Developed the two-part desktop concept.","Planned the placement of the key actions: delivery and booking.","Built the structure of content blocks and visual accents.","Designed the responsive versions on a single underlying logic.","Prepared mockups for handoff to the Tilda build."]},
+    {t:"fig",k:"res_variants",c:"Three presentation concepts the final direction was chosen from"}
+  ]
+},
+{
+  id:"tourism",
+  title:"Website for a travel company in Irkutsk",
+  kind:["Website","BAIKAL TRAIN"],
+  thumb:"tur_main",
+  lead:"Redesigned the website of a tour operator running trips on the Circum-Baikal Railway: rebuilt the information architecture, created the design concept and more than 30 responsive layouts.",
+  meta:[
+    ["Role","Research and information architecture, prototyping, design concept, UI element library, responsive layouts"],
+    ["Client","BAIKAL TRAIN, the official organizer of Circum-Baikal Railway tours since 2010, with more than 20,000 travelers a year"],
+    ["Scope","30+ responsive layouts for desktop and mobile"]
+  ],
+  blocks:[
+    {t:"h",v:"Outcome"},
+    {t:"p",v:"Simplifying how content was organized and presented made it easier for users to explore the site and find information, and visual accents helped draw attention to the key elements."},
+    {t:"p",v:"The interface became stylish and clear, and the design concept reflected the company’s philosophy and positioning."},
+    {t:"fig",k:"tur_main",c:"Home page: desktop and mobile versions"},
+    {t:"h",v:"The task"},
+    {t:"p",v:"The company asked for a refresh of its website: the design was outdated, the navigation needed simplifying and the content needed work."},
+    {t:"h",v:"Interviews and preparation"},
+    {t:"p",v:"The work started with several client interviews to gather information and define requirements. They helped me understand the project’s overall problems and the client’s business goals, and frame the tasks the new design had to solve."},
+    {t:"h",v:"Research and information architecture"},
+    {t:"p",v:"The interviews showed that the client had content problems: some texts were hard to read and didn’t match the target audience. This could get in the way of the users’ main action, booking a tour."},
+    {t:"p",v:"It also turned out that the navigation included several pages with very little content that could be merged into one section. I analyzed competitors and their design decisions, and together with the client we identified the strengths and weaknesses of existing solutions. This analysis became the basis for the new site structure."},
+    {t:"fig",k:"tur_ia",c:"Information architecture and user flows"},
+    {t:"h",v:"Page design"},
+    {t:"p",v:"At the design stage I prototyped the home page, defining its blocks and their importance to users. New pages were created and existing ones reworked on the same principle."},
+    {t:"fig",k:"tur_wire",c:"Home page prototype: blocks and their priority"},
+    {t:"h",v:"Moodboard and design concept"},
+    {t:"p",v:"The client wanted more visuals connected to nature and travel, so that the site would better reflect the brand. After studying similar sites and assembling a moodboard, it became clear that the client’s brand identity fit a “journey into nature” concept and matched the expectations of the niche."},
+    {t:"fig",k:"tur_mood",c:"Design concept moodboard"},
+    {t:"h",v:"Page and responsive design"},
+    {t:"p",v:"The home page set the overall color and type system. While designing the other pages I built a library of UI elements that kept growing, which sped up layout work and kept the design consistent."},
+    {t:"p",v:"Elements were designed for both dark and light themes, since the design used blocks of both."},
+    {t:"fig",k:"tur_tour",c:"Tour page"},
+    {t:"fig",k:"tur_pc",c:"Inner pages of the site"},
+    {t:"fig",k:"tur_phone",c:"Mobile versions: 30+ responsive layouts"}
+  ]
+},
+{
+  id:"jewelry",
+  title:"Website and marketplace for a jewelry brand",
+  kind:["E-commerce","Mobile-first"],
+  thumb:"jew_photo",
+  lead:"Restructured the website of the MIE jewelry brand and designed detailed mobile-first prototypes of every screen.",
+  meta:[
+    ["Role","Site restructure, detailed prototypes of all screens, an interactive prototype for the client presentation and handoff to the studio’s UI designer"],
+    ["Client","MIE, a silver jewelry brand from Saint Petersburg with 20+ stores across the country, an online store and a marketplace presence"],
+    ["Approach","Mobile-first: most visitors come to the site from mobile devices"]
+  ],
+  blocks:[
+    {t:"fig",k:"jew_photo",c:"Mobile purchase flow"},
+    {t:"h",v:"The problem"},
+    {t:"p",v:"MIE had a website, but its complex structure made it hard to find jewelry quickly, which hurt conversion and therefore revenue. The design was also outdated and needed a refresh."},
+    {t:"h",v:"The task"},
+    {t:"p",v:"My job was to rethink the site structure and design detailed prototypes of all its screens. The main goal of the new site was to increase the number of orders."},
+    {t:"h",v:"References"},
+    {t:"p",v:"Before design began, the client shared their wishes and references for the expected result. I analyzed them and added my own ideas for each section of the site. Once the references were agreed, I moved on to designing the screens."},
+    {t:"h",v:"Design"},
+    {t:"p",v:"Prototypes were developed scenario by scenario:"},
+    {t:"ul",v:["browsing a product and making a purchase;","signing up and managing the account;","finding products in the catalog with filters;","finding additional information that helps with the purchase decision."]},
+    {t:"p",v:"Special attention went to mobile usability, since most of the traffic came from mobile devices. While working on the screens, I considered how best to implement features and arrange content for convenient use on both desktop and mobile."},
+    {t:"fig",k:"jew_screens",c:"Mobile screen prototypes: catalog, product page, checkout, account"},
+    {t:"h",v:"Interactive prototype"},
+    {t:"p",v:"The finished prototypes were made interactive: I set them up and prepared them for presenting to the client for approval and for handoff to the studio’s UI designer."},
+    {t:"fig",k:"jew_flow",c:"User flows and connections between screens"},
+    {t:"fig",k:"jew_structure",c:"Prototype structure by section"}
+  ]
+}
+];
+
 const ICONS={
   mail:'<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.4 6.6A2.4 2.4 0 0 1 4.8 4.5h14.4a2.4 2.4 0 0 1 2.4 2.1v.4l-9.2 5.7a.8.8 0 0 1-.8 0L2.4 7v-.4Zm0 2.6 8.8 5.4c.5.3 1.1.3 1.6 0l8.8-5.4v8.2a2.4 2.4 0 0 1-2.4 2.4H4.8a2.4 2.4 0 0 1-2.4-2.4V9.2Z"/></svg>',
   tg:'<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>'
@@ -601,8 +903,13 @@ function paintIcons(scope){
   });
 }
 
+/* ---------- language state ---------- */
+let LANG = (window.__IA_LANG==="en") ? "en" : "ru";
+const t = k => (UI[LANG] && UI[LANG][k] != null) ? UI[LANG][k] : (UI.ru[k] || "");
+const cases = () => LANG==="en" ? CASES_EN : CASES;
+
 /* ---------- render helpers ---------- */
-const el = (t,c)=>{const e=document.createElement(t); if(c) e.className=c; return e;};
+const el = (tag,c)=>{const e=document.createElement(tag); if(c) e.className=c; return e;};
 const home = document.getElementById("home");
 const view = document.getElementById("case-view");
 
@@ -611,22 +918,24 @@ function img(key,alt){
   i.src=IMG[key]; i.alt=alt||""; i.loading="lazy"; i.decoding="async";
   return i;
 }
-
-/* skills / tools */
-const sl=document.getElementById("skills-list");
-SKILLS.forEach(s=>{const t=el("span","tag");t.textContent=s;sl.appendChild(t);});
-const tl=document.getElementById("tools-list");
-TOOLS.forEach(s=>{const t=el("span","tag");t.textContent=s;tl.appendChild(t);});
 document.getElementById("tape-img").src=IMG.tape;
 
+/* skills / tools */
+function renderTags(){
+  const sl=document.getElementById("skills-list"); sl.innerHTML="";
+  SKILLS.forEach(s=>{const x=el("span","tag");x.textContent=s;sl.appendChild(x);});
+  const tl=document.getElementById("tools-list"); tl.innerHTML="";
+  (LANG==="en"?TOOLS_EN:TOOLS).forEach(s=>{const x=el("span","tag");x.textContent=s;tl.appendChild(x);});
+}
+
 /* case index */
-function buildIndex(container,list,small){
+function buildIndex(container,list){
   list.forEach(c=>{
     const row=el("button","case-row");
     row.type="button";
     row.setAttribute("aria-label",c.title);
     const kind=el("div","case-kind mono");
-    kind.innerHTML=c.kind.map(k=>`<div>${k}</div>`).join("");
+    c.kind.forEach(k=>{const d=el("div");d.textContent=k;kind.appendChild(d);});
     const title=el("div","case-title");
     title.textContent=c.title;
     const thumb=el("div","case-thumb");
@@ -636,7 +945,11 @@ function buildIndex(container,list,small){
     container.appendChild(row);
   });
 }
-buildIndex(document.getElementById("case-index"),CASES);
+function renderIndex(){
+  const box=document.getElementById("case-index");
+  box.innerHTML="";
+  buildIndex(box,cases());
+}
 
 /* case view */
 function renderCase(c){
@@ -646,7 +959,7 @@ function renderCase(c){
   const head=el("div","case-head");
   const back=el("button","back");
   back.type="button";
-  back.innerHTML="← Все кейсы";
+  back.textContent=t("back");
   back.addEventListener("click",()=>go(null));
   const kind=el("div","mono");
   kind.style.color="var(--muted)";
@@ -677,7 +990,9 @@ function renderCase(c){
 
   if(c.nda){
     const n=el("div","note");
-    n.innerHTML=`<strong>Ограничения публикации</strong><span>${c.nda}</span>`;
+    const s=el("strong"); s.textContent=t("nda");
+    const sp=el("span"); sp.textContent=c.nda;
+    n.append(s,sp);
     n.style.maxWidth="68ch";
     wrap.appendChild(n);
   }
@@ -702,9 +1017,9 @@ function renderCase(c){
     }
     if(b.t==="ba"){
       const g=el("div","ba");
-      [["Было",b.was],["Стало",b.now]].forEach(([t,arr])=>{
+      [[t("before"),b.was],[t("after"),b.now]].forEach(([label,arr])=>{
         const d=el("div");
-        const h=el("h3");h.textContent=t;
+        const h=el("h3");h.textContent=label;
         const ul=el("ul","dashlist");
         arr.forEach(li=>{const l=el("li");l.textContent=li;ul.appendChild(l);});
         d.append(h,ul);g.appendChild(d);
@@ -714,19 +1029,18 @@ function renderCase(c){
     wrap.appendChild(box);
   });
 
-  const others=CASES.filter(x=>x.id!==c.id);
   const nextSec=el("section");
   const nh=el("div","sec-head");
-  nh.innerHTML='<h2>Другие проекты</h2>';
+  const nh2=el("h2"); nh2.textContent=t("more"); nh.appendChild(nh2);
   const nidx=el("div","idx");
-  buildIndex(nidx,others);
+  buildIndex(nidx,cases().filter(x=>x.id!==c.id));
   nextSec.append(nh,nidx);
   wrap.appendChild(nextSec);
 
   const foot=el("footer");
   const fw=el("div","wrap");
   fw.style.padding="0";
-  fw.innerHTML=`<p class="foot-big">Открыт к продуктовым<br>и дизайн-системным задачам</p>
+  fw.innerHTML=`<p class="foot-big">${t("foot.big")}</p>
     <div class="foot-links">
       <a class="pill" data-icon="mail" href="mailto:nowayhc13@gmail.com">nowayhc13@gmail.com</a>
       <a class="pill" data-icon="tg" href="https://t.me/ilya_nwy" target="_blank" rel="noopener">@ilya_nwy</a>
@@ -740,25 +1054,37 @@ function renderCase(c){
   observeReveals();
 }
 
+/* ---------- static text ---------- */
+function applyStatic(){
+  document.documentElement.lang=LANG;
+  document.querySelectorAll("[data-i18n]").forEach(n=>{n.textContent=t(n.dataset.i18n);});
+  document.querySelectorAll("[data-i18n-html]").forEach(n=>{n.innerHTML=t(n.dataset.i18nHtml);});
+  document.querySelectorAll("[data-i18n-alt]").forEach(n=>{n.alt=t(n.dataset.i18nAlt);});
+  document.querySelectorAll("[data-i18n-aria]").forEach(n=>{n.setAttribute("aria-label",t(n.dataset.i18nAria));});
+  document.querySelectorAll("[data-lang]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.lang===LANG)));
+  renderTags();
+  renderIndex();
+}
+
 /* ---------- routing ---------- */
 function go(id){
   if(id) location.hash="#/"+id;
   else location.hash="";
 }
-function route(){
+function route(keepScroll){
   const m=location.hash.match(/^#\/(.+)$/);
-  const c=m?CASES.find(x=>x.id===m[1]):null;
+  const c=m?cases().find(x=>x.id===m[1]):null;
   if(c){
     home.hidden=true; view.hidden=false;
     renderCase(c);
-    document.title=c.title+" · Илья Андреев";
+    document.title=c.title+" · "+t("name");
   }else{
     view.hidden=true; view.innerHTML=""; home.hidden=false;
-    document.title="Илья Андреев";
+    document.title=t("name");
   }
-  window.scrollTo({top:0,behavior:"instant"});
+  if(!keepScroll) window.scrollTo({top:0,behavior:"instant"});
 }
-window.addEventListener("hashchange",route);
+window.addEventListener("hashchange",()=>route(false));
 
 document.querySelectorAll("[data-jump]").forEach(a=>{
   a.addEventListener("click",e=>{
@@ -774,22 +1100,16 @@ document.querySelectorAll("[data-jump]").forEach(a=>{
 });
 document.querySelector("[data-home]").addEventListener("click",()=>go(null));
 
-/* theme toggle */
-const root=document.documentElement;
-const btn=document.getElementById("theme");
-function currentDark(){
-  const t=root.getAttribute("data-theme");
-  if(t) return t==="dark";
-  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+/* ---------- language switch ---------- */
+function setLang(l){
+  if(l===LANG) return;
+  LANG=l;
+  try{ localStorage.setItem("ia-lang",l); }catch(e){}
+  try{ const u=new URL(location.href); u.searchParams.set("lang",l); history.replaceState(null,"",u); }catch(e){}
+  applyStatic();
+  route(true);
 }
-btn.addEventListener("click",()=>{
-  root.setAttribute("data-theme",currentDark()?"light":"dark");
-  try{localStorage.setItem("ia-theme",root.getAttribute("data-theme"));}catch(e){}
-});
-try{
-  const saved=localStorage.getItem("ia-theme");
-  if(saved==="dark"||saved==="light") root.setAttribute("data-theme",saved);
-}catch(e){}
+document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
 
 /* reveals */
 let io;
@@ -806,8 +1126,10 @@ function observeReveals(){
 }
 
 paintIcons(document);
-route();
+applyStatic();
+route(false);
 observeReveals();
+document.documentElement.classList.remove("i18n-pending");
 </script>
 </body>
 </html>
